@@ -33,18 +33,16 @@ Potremo quindi usarli come "template".
 */
 
 
-//al click devono scorrere le immagini
-
+//è stata assegnata una variabile a ciascun bottone e successivamente la funzione
+//in modo che sostituisca le classi e le immagini cambino
 const nextButton = document.getElementById('next')
 const previousButton = document.getElementById('previous')
 
 nextButton.addEventListener('click',
     function(){
         
-        console.log('avanti')
         const activeElement = document.querySelector('.img-fluid.w-100.d-block')
         const nextElement = activeElement.nextElementSibling
-        console.log(nextElement)
 
         if(nextElement){
         activeElement.classList.add('d-none')
@@ -58,12 +56,9 @@ nextButton.addEventListener('click',
 
 previousButton.addEventListener('click',
     function(){
-
-        console.log('indietro')
         
         const activeElement = document.querySelector('.img-fluid.w-100.d-block')
         const previousElement = activeElement.previousElementSibling
-        console.log(previousElement)
 
         if(previousElement){
         activeElement.classList.add('d-none')
@@ -74,6 +69,5 @@ previousButton.addEventListener('click',
     }
 
 );
-//dalla immagine corrente,
-//quella successiva deve cambiare classe
+
 
