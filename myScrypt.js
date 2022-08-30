@@ -70,4 +70,12 @@ previousButton.addEventListener('click',
 
 );
 
+const activeImage = document.querySelector('.ae-active').src
+let bigActiveImage = document.querySelector('.ae-big-img').src
 
+console.log(activeImage)
+console.log(bigActiveImage)
+
+bigActiveImage += activeImage
+
+console.log(bigActiveImage)
