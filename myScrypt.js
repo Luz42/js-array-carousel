@@ -75,13 +75,35 @@ previousButton.addEventListener('click',
 
 );
 
+/*
+MILESTONE 2
+Adesso rimuoviamo tutto il markup statico e inseriamo tutte le immagini dinamicamente
+servendoci dell'array fornito e un semplice ciclo for che concatena un template literal.
+Tutte le immagini saranno nascoste, tranne la prima,
+che avrà una classe specifica che la renderà visibile.
+Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella milestone 1,
+ma costruito dinamicamente attraverso JavaScript.
 
-// const activeImage = document.querySelector('.ae-active')
-// let bigActiveImage = document.querySelector('.ae-big-img')
+*/
 
-// console.log(activeImage)
-// console.log(bigActiveImage)
 
-// bigActiveImage += activeImage
+//creo l'array di immagini e seleziono il contenitore dove andranno inserite
+const images = ['img/01.jpg', 'img/02.jpg', 'img/03.jpg', 'img/04.jpg', 'img/05.jpg']
+const containerHTML = document.getElementById('images-container')
+START_IMAGE = 0
+//con un ciclo, creo dinamicamente le immagini e le inserisco nell'HTML
 
-// console.log(bigActiveImage)
+for(let i = 0; i<images.length; i++){
+
+    //se i === 0 (ovvero la prima)allora quell'immagine avrà 'ae-active' alrimenti ''
+
+    const activeClass = i === START_IMAGE ? 'ae-active' : '';
+
+    containerHTML.innerHTML += `<img class="img-fluid w-100 d-none ${activeClass}" src="${images[i]}" alt="${images[i]}">`
+
+}
+
+//le immagini sono state create dinamicamente allo stesso modo di quelle statiche, e gli eventi in ascolto (CLICK) funzionano ugualmente
+//perchè vanno ad influenzare il codice generato (anche successivamente), siccome non vengono eseguite fino all'evento (CLICK)
+
+//MILESTONE 3 ************* OK
