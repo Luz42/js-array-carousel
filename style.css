@@ -1,7 +1,19 @@
-.ae-h50{
-    height: 50vh;
+#images-container .ae-h50{
+    height: 75vh;
 }
 
-.ae-active{
+#images-container .ae-active,
+#thumbs-container img {
     display: block !important;
+
 }
+
+#thumbs-container .ae-active {
+    opacity: 1;
+}
+
+#thumbs-container img {
+    height: calc(75vh / 5) !important;
+    opacity: 0.3;
+};
+

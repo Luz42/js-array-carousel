@@ -42,13 +42,17 @@ const previousButton = document.getElementById('previous')
 nextButton.addEventListener('click',
     function(){
 
-        const activeElement = document.querySelector('.ae-active')
+        const activeElementBig = document.querySelector('#images-container .ae-active')
+        const activeElementThumbs = document.querySelector('#thumbs-container .ae-active')
+        
+        const nextElementBig = activeElementBig.nextElementSibling
+        const nextElementThumbs = activeElementThumbs.nextElementSibling
 
-        const nextElement = activeElement.nextElementSibling
-
-        if(nextElement){
-        activeElement.classList.remove('ae-active')
-        nextElement.classList.add('ae-active')
+        if(nextElementBig && nextElementThumbs){
+        activeElementBig.classList.remove('ae-active')
+        nextElementBig.classList.add('ae-active')
+        activeElementThumbs.classList.remove('ae-active')
+        nextElementThumbs.classList.add('ae-active')
         
         // activeImage = document.querySelector('d-block')
         // console.log(activeImage)
@@ -62,13 +66,19 @@ nextButton.addEventListener('click',
 previousButton.addEventListener('click',
     function(){
 
-        const activeElement = document.querySelector('.ae-active')
 
-        const previousElement = activeElement.previousElementSibling
+        const activeElementBig = document.querySelector('#images-container .ae-active')
+        const activeElementThumbs = document.querySelector('#thumbs-container .ae-active')
 
-        if(previousElement){
-        activeElement.classList.remove('ae-active')
-        previousElement.classList.add('ae-active')
+        
+        const previousElementBig = activeElementBig.previousElementSibling
+        const previousElementThumbs = activeElementThumbs.previousElementSibling
+
+        if(previousElementBig && previousElementThumbs){
+        activeElementBig.classList.remove('ae-active')
+        previousElementBig.classList.add('ae-active')
+        activeElementThumbs.classList.remove('ae-active')
+        previousElementThumbs.classList.add('ae-active')
         }
 
     }
@@ -88,20 +98,37 @@ ma costruito dinamicamente attraverso JavaScript.
 
 
 //creo l'array di immagini e seleziono il contenitore dove andranno inserite
-const images = ['img/01.jpg', 'img/02.jpg', 'img/03.jpg', 'img/04.jpg', 'img/05.jpg']
-const containerHTML = document.getElementById('images-container')
+const imagesArray = ['img/01.jpg', 'img/02.jpg', 'img/03.jpg', 'img/04.jpg', 'img/05.jpg']
+const containerImages = document.getElementById('images-container')
+const containerThumbs = document.getElementById('thumbs-container')
+//let images = '';
+//immagine che sarà attiva all'avvio della pagina
 START_IMAGE = 0
 //con un ciclo, creo dinamicamente le immagini e le inserisco nell'HTML
 
-for(let i = 0; i<images.length; i++){
+for(let i = 0; i<imagesArray.length; i++){
 
-    //se i === 0 (ovvero la prima)allora quell'immagine avrà 'ae-active' alrimenti ''
+    //se i === 0 (ovvero la prima) allora quell'immagine avrà 'ae-active' altrimenti ''
 
     const activeClass = i === START_IMAGE ? 'ae-active' : '';
 
-    containerHTML.innerHTML += `<img class="img-fluid w-100 d-none ${activeClass}" src="${images[i]}" alt="${images[i]}">`
+    containerImages.innerHTML += `<img class="img-fluid w-100 ae-h50 d-none ${activeClass}" src="${imagesArray[i]}" alt="${imagesArray[i]}">`
+
+    containerThumbs.innerHTML += `<img class="img-fluid w-100 ae-h50 ${activeClass}" src="${imagesArray[i]}" alt="${imagesArray[i]}">`
 
 }
+
+
+
+// for(let i = 0; i<images.length; i++){
+
+//     //se i === 0 (ovvero la prima) allora quell'immagine avrà 'ae-active' altrimenti ''
+
+//     const activeClass = i === START_IMAGE ? 'ae-active' : '';
+
+//     containerThumbs.innerHTML += `<img class="img-fluid w-100 ${activeClass}" src="${images[i]}" alt="${images[i]}">`
+
+// }
 
 //le immagini sono state create dinamicamente allo stesso modo di quelle statiche, e gli eventi in ascolto (CLICK) funzionano ugualmente
 //perchè vanno ad influenzare il codice generato (anche successivamente), siccome non vengono eseguite fino all'evento (CLICK)
