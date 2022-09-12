@@ -1,3 +1,7 @@
 .ae-h50{
     height: 50vh;
 }
+
+.ae-active{
+    display: block !important;
+}
